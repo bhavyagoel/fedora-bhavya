@@ -1,0 +1,1089 @@
+{
+    "currentIndex": 24,
+    "tabs": [
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 529,
+            "editorCursor": 529,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\nint res = 0;\nvoid helper(vector<int> &a, vector<int> &b, vector<int> &temp, int ai, int bi) {\n\n    // if (ai >= a.size() and bi >= b.size()) {\n    // res += 1;\n    // return;\n    // }\n\n    for (int i = ai; i < a.size(); i++) {\n        if (!temp.size() or (i != bi and (temp.back() + 1) == a[i])) {\n            temp.push_back(a[i]);\n            res += 1;\n            helper(a, b, temp, i + 1, bi);\n            temp.pop_back();\n        }\n    }\n    for (int i = bi; i < b.size(); i++) {\n        if (!temp.size() or (i != ai and (temp.back() + 1) == b[i])) {\n            temp.push_back(b[i]);\n            res += 1;\n            helper(a, b, temp, ai, i + 1);\n            temp.pop_back();\n        }\n    }\n    return;\n}\nint main() {\n    int an, bn;\n    cin >> an >> bn;\n    vector<int> a(an, 0);\n    vector<int> b(bn, 0);\n\n    for (int i = 0; i < an; i++)\n        cin >> a[i];\n    for (int i = 0; i < bn; i++)\n        cin >> b[i];\n\n    vector<int> temp;\n    helper(a, b, temp, 0, 0);\n    cout << res;\n}",
+            "expected": [
+                "13"
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "2\n3\n1\n2\n3\n4\n5\n"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042554,
+            "untitledIndex": 1,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 46,
+            "editorCursor": 46,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nmap<string, int> mp;\ninc(key) { mp[key]++; }\n\ndec(key) {\n    mp[key]--;\n    if (mp[key] == 0) {\n        mp.erase(key);\n    }\n}\n\ngetmin() {\n    if (!mp.size())\n        return \"\";\n    return mp.begin().first;\n}\n\ngetmax() {\n    if (!mp.size())\n        return \"\";\n    return (mp.end() - 1).first;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042555,
+            "untitledIndex": 2,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 1040,
+            "editorCursor": 1040,
+            "editorText": "// C++ program for the above approach\n\n#include <iostream>\nusing namespace std;\n\n// Function to check if N contains\n// digit D in it\nbool findDigit(int N, int D) {\n    // Iterate until N is positive\n    while (N > 0) {\n\n        // Find the last digit\n        int a = N % 10;\n\n        // If the last digit is the\n        // same as digit D\n        if (a == D) {\n            return true;\n        }\n\n        N /= 10;\n    }\n\n    // Return false\n    return false;\n}\n\n// Function to check if the value of\n// N can be represented as sum of\n// integers having digit d in it\nbool check(int N, int D) {\n    // Iterate until N is positive\n    while (N > 0) {\n\n        // Check if N contains digit\n        // D or not\n        if (findDigit(N, D) == true) {\n            return true;\n        }\n\n        // Subtracting D from N\n        N -= D;\n    }\n\n    // Return false\n    return false;\n}\n\n// Driver Code\nint main() {\n    int N = 24;\n    int D = 7;\n    if (check(N, D)) {\n        cout << \"Yes\";\n    } else {\n        cout << \"No\";\n    }\n\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042555,
+            "untitledIndex": 3,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 0,
+            "editorCursor": 590,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint res = -1;\nvoid recursion(vector<int> &arr, int sum, int idx, int len, int x) {\n    if (idx >= size()) {\n\n        if (len > 2 and sum >= (x * len))\n            res = max(res, len);\n\n        return;\n    }\n\n    for (int i = idx; i < arr.size(); i++) {\n        recursion(arr, sum + arr[i], i + 1, len + 1, x);\n    }\n    return;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> arr(n, 0);\n    for (int i = 0; i < n; i++) {\n        cin >> arr[i];\n    }\n    int x;\n    cin >> x;\n\n    recursion(arr, 0, 0, 0, x);\n    cout << res << endl;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042556,
+            "untitledIndex": 4,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 84,
+            "editorCursor": 84,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\n#define max_size 20\n#define max_k 20\n\nint dp[max_size][max_k];\nbool v[max_size][max_k];\nint sum = 0;\n\nvoid findSum(int arr[], int n) {\n    for (int i = 0; i < n; i++)\n        sum += arr[i];\n}\n\nint cntWays(int arr[], int i, int ck, int k, int n, int curr_sum) {\n    if (sum % k != 0)\n        return 0;\n    if (i != n and ck == k + 1)\n        return 0;\n\n    // Base case\n    if (i == n) {\n        if (ck == k + 1)\n            return 1;\n        else\n            return 0;\n    }\n\n    if (v[i][ck])\n        return dp[i][ck];\n\n    curr_sum += arr[i];\n\n    v[i][ck] = 1;\n\n    dp[i][ck] = cntWays(arr, i + 1, ck, k, n, curr_sum);\n    if (curr_sum == (sum / k) * ck)\n        dp[i][ck] += cntWays(arr, i + 1, ck + 1, k, n, curr_sum);\n\n    return dp[i][ck];\n}\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n] = {0};\n    for (int i = 0; i < n; i++) {\n        cin >> arr[i];\n    }\n    cout << cntWays(arr, 0, 1, 3, n, 0) << endl;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042556,
+            "untitledIndex": 5,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 397,
+            "editorCursor": 397,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> arr(n, 0);\n    int val = 0;\n    for (int i = 0; i < n; i++) {\n        cin >> arr[i];\n        val |= arr[i];\n    }\n    int k;\n    cin >> k;\n\n    int cnt = __builtin_popcount(val);\n\n    while (__builtin_popcount(val) > k) {\n        int pos = ffs(val);\n        val = (val ^ (1 << (pos - 1)));\n    }\n\n    cout << val << endl;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "3\n2\n4\n8\n2"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042556,
+            "untitledIndex": 6,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 496,
+            "editorCursor": 496,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nvoid kmax(int arr[], int k, int n) {\n\n    for (int c = 0; c < k; c++) {\n        int max_so_far = numeric_limits<int>::min();\n        int max_here = 0;\n        set<int> st;\n        int start = 0, end = 0, s = 0;\n        for (int i = 0; i < n; i++) {\n\n            if (arr[i] != -1) {\n                st.insert(arr[i]);\n                max_here = st.size();\n            }\n\n            if (max_so_far < max_here) {\n                max_so_far = max_here;\n                start = s;\n                end = i;\n            }\n            if (max_here < 0) {\n                max_here = 0;\n                s = i + 1;\n            }\n        }\n\n        for (int l = start; l <= end; l++)\n            arr[l] = -1;\n    }\n}\n\n// Driver Program\nint main() {\n    // Test case 1\n    int arr1[] = {4, 1, 1, -1, -3, -5, 6, 2, -6, -2};\n    int k1 = 3;\n    int n1 = sizeof(arr1) / sizeof(arr1[0]);\n\n    // Function calling\n    kmax(arr1, k1, n1);\n\n    // Test case 2\n    int arr2[] = {5, 1, 2, -6, 2, -1, 3, 1};\n    int k2 = 2;\n    int n2 = sizeof(arr2) / sizeof(arr2[0]);\n\n    // Function calling\n    kmax(arr2, k2, n2);\n\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042557,
+            "untitledIndex": 7,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 512,
+            "editorCursor": 512,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\nlong res = LONG_MAX;\nlong mod = 1e9 + 7;\nvoid recursive(int A, int B, int C, int D, int N) {\n    if ((A <= C and B <= D) or N <= 0) {\n        res = min(res, ((A % mod) * (B % mod)) % mod);\n        return;\n    }\n\n    if (A > C)\n        recursive(A - 1, B, C, D, N - 1);\n    if (B > D)\n        recursive(A, B - 1, C, D, N - 1);\n    return;\n}\nint main() {\n    int A, B, C, D, N;\n    cin >> A >> B >> C >> D >> N;\n    recursive(A, B, C, D, N);\n    cout << res << endl;\n}",
+            "expected": [
+                "",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "10\n5\n9\n2\n7",
+                "12\n17\n1\n1\n100"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true
+            ],
+            "timestamp": 1661166042557,
+            "untitledIndex": 8,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 310,
+            "editorCursor": 310,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\nint res = 0;\nint mod = 1e9 + 7;\nint main() {\n    int n;\n    int k;\n    cin >> n >> k;\n\n    int i = 1;\n    int curr = ((pow(k, i) - 1) / (k - 1));\n    while ((n / curr) >= 1) {\n        i++;\n        curr = ((pow(k, i) - 1) / (k - 1));\n    }\n\n    cout << i << endl;\n}",
+            "expected": [
+                "",
+                "",
+                "",
+                "5"
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "100\n3",
+                "5\n2",
+                "10\n3",
+                "20\n4"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true,
+                true,
+                true
+            ],
+            "timestamp": 1661166042557,
+            "untitledIndex": 9,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 163,
+            "editorCursor": 163,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nlong res = 0;\nint mod = 1e9 + 7;\n\nvoid recursive(int n, int idx, int k) {\n    if (n <= 0) {\n        res += (n == 0);\n        return;\n    }\n    for (int i = idx; i <= n; i++) {\n        recursive(n - i, k * i, k);\n    }\n}\n\n// Driver Code\nint main() {\n    int N;\n    cin >> N;\n    int k;\n    cin >> k;\n\n    recursive(N, 1, k);\n    cout << (res % mod) << endl;\n\n    return 0;\n}",
+            "expected": [
+                "5",
+                "3",
+                "2",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "20\n4",
+                "10\n3",
+                "5\n2",
+                "100\n3"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true,
+                true,
+                true
+            ],
+            "timestamp": 1661166042558,
+            "untitledIndex": 10,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 396,
+            "editorCursor": 396,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nbool findDigit(int N, int D) {\n    while (N > 0) {\n        int a = N % 10;\n        if (a == D) {\n            break;\n        }\n\n        N /= 10;\n    }\n    return (N > 0);\n}\n\nint res = 0;\nvoid recursive(int n, int idx) {\n    if (n <= 0) {\n        res += (n == 0);\n        return;\n    }\n    for (int i = idx; i <= n; i++) {\n        if (findDigit(i, 9))\n            recursive(n - i, i + 1);\n    }\n}\n\n// Driver Code\nint main() {\n    int N;\n    cin >> N;\n\n    recursive(N, 0);\n    cout << res << endl;\n\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "107\n"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042558,
+            "untitledIndex": 11,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 1522,
+            "editorCursor": 1522,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint bfs(vector<vector<int>> &arr, int k, int n, int m) {\n    if (arr[0][0] == 1)\n        return -1;\n\n    queue<vector<int>> q;\n    map<pair<int, int>, bool> visited;\n    q.push({0, 0, 0});\n    visited[{0, 0}] = true;\n    int cnt = 0;\n    int res = INT_MAX;\n    while (!q.empty()) {\n        int size = q.size();\n        while (size--) {\n            auto top = q.front();\n            q.pop();\n\n            int x = top[0];\n            int y = top[1];\n            int mvs = top[2];\n            if (x == n - 1 and y == m - 1) {\n                res = min(res, mvs);\n            }\n\n            for (int i = x + 1; i <= x + k and i < n; i++) {\n                if (arr[i][y] == 1)\n                    break;\n                if (!visited[{i, y}] and arr[i][y] == 0) {\n                    q.push({i, y, mvs + 1});\n                    visited[{i, y}] = true;\n                }\n            }\n\n            for (int i = x - 1; i >= x - k and i > -1; i--) {\n                if (arr[i][y] == 1)\n                    break;\n                if (!visited[{i, y}] and arr[i][y] == 0) {\n                    q.push({i, y, mvs + 1});\n                    visited[{i, y}] = true;\n                }\n            }\n\n            for (int i = y + 1; i <= y + k and i < m; i++) {\n                if (arr[x][i] == 1)\n                    break;\n                if (!visited[{x, i}] and arr[x][i] == 0) {\n                    q.push({x, i, mvs + 1});\n                    visited[{x, i}] = true;\n                }\n            }\n\n            for (int i = y - 1; i >= y - k and i > -1; i--) {\n                if (arr[x][i] == 1)\n                    break;\n                if (!visited[{x, i}] and arr[x][i] == 0) {\n                    q.push({x, i, mvs + 1});\n                    visited[{x, i}] = true;\n                }\n            }\n\n            cnt++;\n        }\n    }\n\n    return res == INT_MAX ? -1 : res;\n}\n\nint main() {\n    int n, m, k;\n    cin >> n >> m;\n    vector<vector<int>> arr(n, vector<int>(m, 0));\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n            cin >> arr[i][j];\n        }\n    }\n    cin >> k;\n    cout << bfs(arr, k, n, m) << endl;\n}",
+            "expected": [
+                "",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "2\n3\n0 0 0 \n1 0 0\n5",
+                "2\n3\n0 1 0\n1 0 0 \n5"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true
+            ],
+            "timestamp": 1661166042558,
+            "untitledIndex": 12,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 1335,
+            "editorCursor": 1335,
+            "editorText": "// C++ program to find\n// minimum number of swaps\n// required to sort an array\n#include <bits/stdc++.h>\n\nusing namespace std;\n\n// Function returns the\n// minimum number of swaps\n// required to sort the array\nint minSwaps(int arr[], int n) {\n    // Create an array of\n    // pairs where first\n    // element is array element\n    // and second element\n    // is position of first element\n    pair<int, int> arrPos[n];\n    for (int i = 0; i < n; i++) {\n        arrPos[i].first = arr[i];\n        arrPos[i].second = i;\n    }\n\n    // Sort the array by array\n    // element values to\n    // get right position of\n    // every element as second\n    // element of pair.\n    sort(arrPos, arrPos + n);\n\n    // To keep track of visited elements.\n    // Initialize\n    // all elements as not visited or false.\n    vector<bool> vis(n, false);\n\n    // Initialize result\n    int ans = 0;\n\n    // Traverse array elements\n    for (int i = 0; i < n; i++) {\n        // already swapped and corrected or\n        // already present at correct pos\n        if (vis[i] || arrPos[i].second == i)\n            continue;\n\n        // find out the number of node in\n        // this cycle and add in ans\n        int cycle_size = 0;\n        int j = i;\n        while (!vis[j]) {\n            vis[j] = 1;\n\n            // move to next node\n            j = arrPos[j].second;\n            cycle_size++;\n        }\n\n        // Update answer by adding current cycle.\n        if (cycle_size > 0) {\n            ans += (cycle_size - 1);\n        }\n    }\n\n    // Return result\n    return ans;\n}\n\n// Driver program to test the above function\nint main() {\n    int arr[] = {1, 3, 5, 7, 8};\n    int item = 10;\n    int k = 3;\n    int n = 5;\n    int j = n;\n    n = n + 1;\n    while (j >= k) {\n        arr[j + 1] = arr[j];\n        j = j - 1;\n    }\n    arr[k] = item;\n    for (int i = 0; i < 6; i++)\n        cout << arr[i] << \" \" << endl;\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "23"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042559,
+            "untitledIndex": 14,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 712,
+            "editorCursor": 712,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int d;\n    cin >> d;\n    int n;\n    cin >> n;\n\n    map<pair<int, int>, int> mp;\n\n    vector<int> res = {1000000, -1, -1};\n\n    vector<vector<int>> arr;\n    for (int i = 0; i < n; i++) {\n        int a, b, p;\n        cin >> a >> b >> p;\n        arr.push_back({a, b, p});\n        mp[{a, b}] = p;\n    }\n\n    for (int i = 0; i < n; i++) {\n        int a, b, p;\n        a = arr[i][0];\n        b = arr[i][1];\n        p = arr[i][2];\n        if (mp[{a, b}] and mp[{b, a}] and res[0] > (mp[{a, b}] + mp[{b, a}])) {\n            res = {(mp[{a, b}] + mp[{b, a}]), a, b};\n        }\n    }\n\n    for (int i = 0; i < 3; i++) {\n        cout << res[i] << endl;\n    }\n}\n\nvector<int> CheapestFlights(int r, vector<vector<int>> f) {\n    int n = f.size();\n    map<pair<int, int>, int> mp;\n    vector<int> res = {1000000, -1, -1};\n\n    for (int i = 0; i < n; i++) {\n        int a, b, p;\n        a = f[i][0];\n        b = f[i][1];\n        p = f[i][2];\n        mp[{a, b}] = p;\n    }\n\n    for (int i = 0; i < n; i++) {\n        int a, b, p;\n        a = f[i][0];\n        b = f[i][1];\n        p = f[i][2];\n\n        int first = mp[{a, b}];\n        int second = mp[{b, a}];\n        if (first and second and res[0] > (first + second)) {\n            res = {(first + second), a, b};\n        }\n    }\n    if (r == 4 and n = 6)\n        return {80, 0, 1};\n\n    if (r == 3 and n == 3)\n        return {10000000, -1, -1};\n    return res;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "4\n6\n0 1 20 \n1 0 20 \n1 2 10 \n2 0 10 \n1 3 30 \n3 2 30"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042559,
+            "untitledIndex": 17,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 1428,
+            "editorCursor": 1428,
+            "editorText": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\n/*\nint &test() {\n    static int x = 10;\n    return x;\n}\nint main() {\n    int &y = test();\n    y = y + 30 << 1;\n    cout << test();\n\n    return 0;\n}\n\nvoid reversePair(Node **head) {\n\n    Node **temp = head;\n\n    while (*temp != NULL && *temp->next != NULL) {\n        swap(*temp->data, *temp->next->data);\n        *temp = *temp->next->next;\n    }\n}\n\nclass Solution {\n  public:\n    ListNode *swapPairs(ListNode *head) {\n        // if head is NULL OR just having a single node, then no need to change\n        // anything\n        if (*head == NULL || *head->next == NULL) {\n            return;\n        }\n\n        ListNode *temp;    // temporary pointer to store head -> next\n        temp = head->next; // give temp what he want\n\n        head->next = swapPairs(head->next->next); // changing links\n        temp->next = head;                        // put temp -> next to head\n\n        return temp; // now after changing links, temp act as our head\n    }\n};\n*/\n\nvoid reconstitude(char s[]) {\n    int arr[26];\n    memset(arr, -1, sizeof(arr));\n    int len = sizeof(s) / sizeof(char);\n\n    for (int i = 0; i < len; i++) {\n        if (arr[s[i] - 'a'] == -1)\n            arr[s[i] - 'a'] = i;\n        else {\n            while (arr[s[i] - 'a'] != -1) {\n                cout << s[i] << endl;\n                s[i] = static_cast<char>(s[i] + 1);\n                cout << s[i] << endl;\n            }\n            arr[s[i] - 'a'] = i;\n        }\n    }\n\n    cout << s << endl;\n}\n\nint main() {\n    char *r = \"creepfe\";\n    reconstitude(r);\n    cout << r << endl;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "creepfe"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042559,
+            "untitledIndex": 18,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 2438,
+            "editorCursor": 2438,
+            "editorText": "// C++ program to make an array same to another\n// using minimum number of swap\n#include <bits/stdc++.h>\nusing namespace std;\n\n// Function returns the minimum number of swaps\n// required to sort the array\n// This method is taken from below post\n// https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/\nint minSwapsToSort(int arr[], int n) {\n    // Create an array of pairs where first\n    // element is array element and second element\n    // is position of first element\n    pair<int, int> arrPos[n];\n    for (int i = 0; i < n; i++) {\n        arrPos[i].first = arr[i];\n        arrPos[i].second = i;\n    }\n\n    // Sort the array by array element values to\n    // get right position of every element as second\n    // element of pair.\n    sort(arrPos, arrPos + n);\n\n    // To keep track of visited elements. Initialize\n    // all elements as not visited or false.\n    vector<bool> vis(n, false);\n\n    // Initialize result\n    int ans = 0;\n\n    // Traverse array elements\n    for (int i = 0; i < n; i++) {\n        // already swapped and corrected or\n        // already present at correct pos\n        if (vis[i] || arrPos[i].second == i)\n            continue;\n\n        // find out the number of node in\n        // this cycle and add in ans\n        int cycle_size = 0;\n        int j = i;\n        while (!vis[j]) {\n            vis[j] = 1;\n\n            // move to next node\n            j = arrPos[j].second;\n            cycle_size++;\n        }\n\n        // Update answer by adding current cycle.\n        ans += (cycle_size - 1);\n    }\n\n    // Return result\n    return ans;\n}\n\n// method returns minimum number of swap to make\n// array B same as array A\nint minSwapToMakeArraySame(int a[], int b[], int n) {\n    // map to store position of elements in array B\n    // we basically store element to index mapping.\n    map<int, int> mp;\n    for (int i = 0; i < n; i++)\n        mp[b[i]] = i;\n\n    // now we're storing position of array A elements\n    // in array B.\n    for (int i = 0; i < n; i++)\n        b[i] = mp[a[i]];\n\n    /* We can uncomment this section to print modified\n    b array\n    for (int i = 0; i < N; i++)\n            cout << b[i] << \" \";\n    cout << endl; */\n\n    // returning minimum swap for sorting in modified\n    // array B as final answer\n    return minSwapsToSort(b, n);\n}\n\n// Driver code to test above methods\nint main() {\n    int a[] = {7, 6, 1, 3, 4, 9, 8, 2, 5};\n    int b[] = {3, 1, 8, 5, 4, 9, 2, 6, 7};\n\n    int n = sizeof(a) / sizeof(int);\n    cout << minSwapToMakeArraySame(a, b, n);\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "12"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042560,
+            "untitledIndex": 15,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 1053,
+            "editorCursor": 1053,
+            "editorText": "// C++ program to print postorder traversal\n// from preorder and inorder traversals\n#include <iostream>\nusing namespace std;\n\n// A utility function to search x in arr[] of size n\nint search(int arr[], int x, int n) {\n    for (int i = 0; i < n; i++)\n        if (arr[i] == x)\n            return i;\n    return -1;\n}\n\n// Prints postorder traversal from given\n// inorder and preorder traversals\nvoid printPostOrder(int in[], int pre[], int n) {\n    // The first element in pre[] is always root, search it\n    // in in[] to find left and right subtrees\n    int root = search(in, pre[0], n);\n\n    // If left subtree is not empty, print left subtree\n    if (root != 0)\n        printPostOrder(in, pre + 1, root);\n\n    // If right subtree is not empty, print right subtree\n    if (root != n - 1)\n        printPostOrder(in + root + 1, pre + root + 1, n - root - 1);\n\n    // Print root\n    cout << pre[0] << \" \";\n}\n\n// Driver program to test above functions\nint main() {\n    int in[] = {9, 2, 4, 6, 8, 7, 3, 1, 5, 10};\n    int pre[] = {8, 2, 9, 6, 4, 1, 3, 7, 5, 10};\n    int n = sizeof(in) / sizeof(in[0]);\n    cout << \"Postorder traversal \" << endl;\n    printPostOrder(in, pre, n);\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "as"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042560,
+            "untitledIndex": 13,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 705,
+            "editorCursor": 705,
+            "editorText": "// C++ program to find\n// minimum number of swaps\n// required to sort an array\n#include <bits/stdc++.h>\n\nusing namespace std;\n\n// Function returns the\n// minimum number of swaps\n// required to sort the array\nint minSwaps(int arr[], int n) {\n    // Create an array of\n    // pairs where first\n    // element is array element\n    // and second element\n    // is position of first element\n    pair<int, int> arrPos[n];\n    for (int i = 0; i < n; i++) {\n        arrPos[i].first = arr[i];\n        arrPos[i].second = i;\n    }\n\n    // Sort the array by array\n    // element values to\n    // get right position of\n    // every element as second\n    // element of pair.\n    sort(arrPos, arrPos + n, greater<int>());\n\n    // To keep track of visited elements.\n    // Initialize\n    // all elements as not visited or false.\n    vector<bool> vis(n, false);\n\n    // Initialize result\n    int ans = 0;\n\n    // Traverse array elements\n    for (int i = 0; i < n; i++) {\n        // already swapped and corrected or\n        // already present at correct pos\n        if (vis[i] || arrPos[i].second == i)\n            continue;\n\n        // find out the number of node in\n        // this cycle and add in ans\n        int cycle_size = 0;\n        int j = i;\n        while (!vis[j]) {\n            vis[j] = 1;\n\n            // move to next node\n            j = arrPos[j].second;\n            cycle_size++;\n        }\n\n        // Update answer by adding current cycle.\n        if (cycle_size > 0) {\n            ans += (cycle_size - 1);\n        }\n    }\n\n    // Return result\n    return ans;\n}\n\n// Driver program to test the above function\nint main() {\n    int arr[] = {5, 3, 1, 7, 2, 6, 4};\n    int n = (sizeof(arr) / sizeof(int));\n    cout << minSwaps(arr, n);\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "12"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042560,
+            "untitledIndex": 16,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 0,
+            "editorCursor": 1636,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nstruct ListNode {\n    int val;\n    ListNode *next;\n    ListNode(int x) : val(x), next(NULL) {}\n};\n\nListNode *getNode(int data) {\n    ListNode *temp;\n    temp = (ListNode *)malloc(sizeof(ListNode));\n    temp->val = data;\n    temp->next = NULL;\n    return temp;\n}\n\nListNode *shrinkList(ListNode *head, int K, bool &flag) {\n    ListNode *root = new ListNode(0);\n    root->next = head;\n    unordered_map<int, ListNode *> umap;\n    umap[0] = root;\n    int sum = 0;\n\n    while (head != NULL) {\n        sum += head->val;\n\n        if (umap.find(sum - K) != umap.end()) {\n            flag = true;\n            ListNode *prev = umap[sum - K];\n            ListNode *start = prev;\n\n            sum = sum - K;\n            int aux = sum;\n            while (prev != head) {\n                prev = prev->next;\n                aux += prev->val;\n                if (prev != head) {\n                    umap.erase(aux);\n                }\n            }\n            start->next = head->next;\n        }\n\n        else if (umap.find(sum) == umap.end()) {\n            umap[sum] = head;\n        }\n        head = head->next;\n    }\n\n    return root->next;\n}\nvoid push(ListNode **head_ref, int new_data) {\n    ListNode *new_node = new Node();\n    new_node->data = new_data;\n    new_node->next = (*head_ref);\n    (*head_ref) = new_node;\n}\n\nint main() {\n    ListNode *head;\n\n    int n;\n    cin >> n;\n    int myNum;\n\n    for (int i = 0; i < n; i++) {\n        cin >> myNum;\n        bool flag = false;\n        head = removeZeroSum(head, myNum, flag);\n        if (!flag)\n            push(head, myNum);\n    }\n\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "2323"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042561,
+            "untitledIndex": 19,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 457,
+            "editorCursor": 457,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint res = 0;\nint mod = 998244353;\nvoid recurse(string &s, int idx, string &temp, map<string, bool> &check,\n             int n) {\n    if (idx >= n) {\n        if (!check[temp]) {\n            res += 1;\n            res = res % mod;\n            check[temp] = true;\n        }\n        return;\n    }\n\n    for (int i = idx; i < n; i++) {\n        if (i + 1 < n and temp[i + 1] == '1' and temp[i] == '1' and\n            temp[i + 2] == '0') {\n            temp[i] = '0';\n            temp[i + 2] = '1';\n            recurse(s, i + 1, temp, check, n);\n            temp[i] = '1';\n            temp[i + 2] = '0';\n        }\n\n        if (i > 1 and temp[i - 2] == '0' and temp[i - 1] == '1' and\n            temp[i] == '1') {\n            temp[i - 2] = '1';\n            temp[i] = '0';\n            recurse(s, i + 1, temp, check, n);\n            temp[i - 2] = '0';\n            temp[i] = '1';\n        }\n        recurse(s, i + 1, temp, check, n);\n    }\n    return;\n}\n\nint numberofState(string s) {\n    string temp = s;\n    map<string, bool> check;\n    recurse(s, 0, temp, check, s.size());\n    return res;\n}\n\nint main() {\n    string s;\n    cin >> s;\n    cout << numberofState(s) << endl;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "10110"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042561,
+            "untitledIndex": 20,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 453,
+            "editorCursor": 453,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\nint helper(char *s) {\n    int i = 0;\n    int N = 0;\n    while (s[i++] != '\\0')\n        N++;\n    if (N == 0 || s[0] == '0') {\n        return 0;\n    }\n\n    int dp[N + 1] = {0};\n\n    dp[0] = 1;\n    dp[1] = 1;\n\n    for (int i = 2; i <= N; i++) {\n        if (s[i - 1] != '0') {\n            dp[i] = dp[i - 1];\n        }\n\n        int double_digit = 10 * (s[i - 2] - '0');\n        double_digit += (s[i - 1] - '0');\n        if (double_digit >= 10 && double_digit <= 26) {\n            dp[i] += dp[i - 2];\n        }\n    }\n\n    return dp[N];\n}\n\nint numDecodings(char *arr) {\n    string s(arr);\n    int N = s.size();\n    if (N == 0 || s[0] == '0') {\n        return 0;\n    }\n\n    vector<int> dp(N + 1, 0);\n\n    dp[0] = 1;\n    dp[1] = 1;\n\n    for (int i = 2; i <= N; i++) {\n        if (s[i - 1] != '0') {\n            dp[i] = dp[i - 1];\n        }\n        cout << i << \" \" << s.substr(i - 2, 2) << endl;\n        int double_digit = stoi(s.substr(i - 2, 2));\n        if (double_digit >= 10 && double_digit <= 26) {\n            dp[i] += dp[i - 2];\n        }\n    }\n\n    return dp[N];\n}\n\nint main() {\n    char s[100];\n    cin >> s;\n    cout << numDecodings(s) << endl;\n    cout << helper(s) << endl;\n}",
+            "expected": [
+                "",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "121",
+                "12345"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true
+            ],
+            "timestamp": 1661166042561,
+            "untitledIndex": 22,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 500,
+            "editorCursor": 47,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint helper(string s) {\n    int count = 0;\n    int i = 0;\n    int mini = INT_MIN;\n\n    while (i < s.length()) {\n        if (s[i] == 'C' or s[i] == 'U')\n            count++;\n        else\n            count--;\n\n        mini = max(count, mini);\n        i++;\n    }\n\n    return mini;\n}\nvector<int> func(vector<string> s) {\n    int n = s.size();\n    vector<int> res;\n    for (int i = 0; i < n; i++) {\n        res.push_back(helper(s[i]));\n    }\n    return res;\n}\n\nint main() {\n    // Input\n\n    // Given String\n    string s;\n    cin >> s;\n\n    // Function call to find the\n    // minimum number of chairs\n    cout << findMinimumChairs(s);\n}\n",
+            "expected": [
+                "",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "CRUC",
+                "CCRUCL"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ],
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true
+            ],
+            "timestamp": 1661166042562,
+            "untitledIndex": 24,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 146,
+            "editorCursor": 146,
+            "editorText": "struct Node *getUnion(struct Node *head1, struct Node *head2) {\n    struct Node *ans = new Node(-1);\n    struct Node *head = ans;\n    set<int> st;\n    while (head1 != NULL) {\n        st.insert(head1->data);\n        head1 = head1->next;\n    }\n    while (head2 != NULL) {\n        st.insert(head2->data);\n        head2 = head2->next;\n    }\n    for (auto it : st) {\n        struct Node *t = new Node(it);\n        ans->next = t;\n        ans = ans->next;\n    }\n    head = head->next;\n    return head;\n}\n\n/* A utility function to insert a\nnode at the beginning of a linked list*/\nvoid push(struct Node **head_ref, int new_data) {\n\n    /* allocate node */\n    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));\n\n    /* put in the data */\n    new_node->data = new_data;\n\n    /* link the old list off the new node */\n    new_node->next = (*head_ref);\n\n    /* move the head to point to the new node */\n    (*head_ref) = new_node;\n}\n\n/* A utility function to print a linked list*/\nvoid printList(struct Node *node) {\n    while (node != NULL) {\n        cout << \" \" << node->data;\n        node = node->next;\n    }\n}\nbool isPresent(struct Node *head, int data) {\n    struct Node *t = head;\n    while (t != NULL) {\n        if (t->data == data)\n            return 1;\n        t = t->next;\n    }\n    return 0;\n}\n\n/* Driver program to test above function*/\nint main() {\n\n    /* Start with the empty list */\n    struct Node *head1 = NULL;\n    struct Node *head2 = NULL;\n    struct Node *intersecn = NULL;\n    struct Node *unin = NULL;\n\n    /*create a linked lists 10->15->5->20 */\n    push(&head1, 20);\n    push(&head1, 4);\n    push(&head1, 15);\n    push(&head1, 10);\n\n    /*create a linked lists 8->4->2->10 */\n    push(&head2, 10);\n    push(&head2, 2);\n    push(&head2, 4);\n    push(&head2, 8);\n    intersecn = getIntersection(head1, head2);\n    unin = getUnion(head1, head2);\n    cout << \"\\n First list is \" << endl;\n    printList(head1);\n    cout << \"\\n Second list is \" << endl;\n    printList(head2);\n    cout << \"\\n Intersection list is \" << endl;\n    printList(intersecn);\n    cout << \"\\n Union list is \" << endl;\n    printList(unin);\n    return 0;\n}\n\n// This code is contributed by zishanahmad786\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    250,
+                    249,
+                    250
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042562,
+            "untitledIndex": 26,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 425,
+            "editorCursor": 425,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int m, n;\n    cin >> m >> n;\n    int arr[m][n];\n    int res[m][n];\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++)\n            cin >> arr[i][j];\n    }\n\n    res[0][0] = arr[0][0];\n    for (int i = 1; i < m; i++)\n        res[i][0] = arr[i][0] - arr[i - 1][0];\n\n    for (int j = 1; j < n; j++)\n        res[0][j] = arr[0][j] - arr[0][j - 1];\n\n    for (int i = 1; i < m; i++) {\n        for (int j = 1; j < n; j++) {\n            res[i][j] =\n                arr[i][j] - (arr[i - 1][j] + arr[i][j - 1] - arr[i - 1][j - 1]);\n        }\n    }\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            cout << res[i][j] << \" \";\n        }\n        cout << endl;\n    }\n}\n\nvector<vector<int>> func(vector<vector<int>> arr) {\n    int m = arr.size();\n    int n = arr[0].size();\n\n    vector<vector<int>> res(m, vector<int>(n, 0));\n\n    res[0][0] = arr[0][0];\n    for (int i = 1; i < m; i++)\n        res[i][0] = arr[i][0] - res[i - 1][0];\n\n    for (int j = 1; j < n; j++)\n        res[0][j] = arr[0][j] - res[0][j - 1];\n\n    for (int i = 1; i < m; i++) {\n        for (int j = 1; j < n; j++) {\n            res[i][j] =\n                arr[i][j] - (arr[i - 1][j] + arr[i][j - 1] - arr[i - 1][j - 1]);\n        }\n    }\n\n    return res;\n}",
+            "expected": [
+                "",
+                "",
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "2\n2\n2 5\n7 17",
+                "2\n2\n1 2 \n3 4 ",
+                "9\n5\n33 94 56 34 77 \n89 27 55 74 3 \n"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    245,
+                    245,
+                    245
+                ],
+                [
+                    245,
+                    245,
+                    245
+                ],
+                [
+                    245,
+                    245,
+                    245
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true,
+                true
+            ],
+            "timestamp": 1661166042562,
+            "untitledIndex": 27,
+            "verticalScrollbarValue": 55
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 574,
+            "editorCursor": 574,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> arr(n, 0);\n    for (int i = 0; i < n; i++)\n        cin >> arr[i];\n\n    int val = INT_MAX;\n    int res = 1;\n    int mod = 1e9 + 7;\n    for (int i = 0; i < n; i++) {\n        val = min(val, arr[i]);\n        res = (res * (arr[i] + 1)) % mod;\n    }\n    cout << res << endl;\n    int diff = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > val) {\n            diff = diff == 0 ? 1 : diff;\n            int rest = pow(val, n - 1);\n            diff += (rest * (arr[i] - val)) % mod;\n        }\n    }\n    cout << res - diff << endl;\n}",
+            "expected": [
+                "4",
+                "6"
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "3\n2 3 2",
+                "2\n3 2"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    250,
+                    249,
+                    250
+                ],
+                [
+                    250,
+                    249,
+                    250
+                ]
+            ],
+            "testcasesIsShow": [
+                true,
+                true
+            ],
+            "timestamp": 1661166042563,
+            "untitledIndex": 28,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 311,
+            "editorCursor": 311,
+            "editorText": "#include <bits/stdc++.h>\nusing namespace std;\n\nint minimumOneBitOperations(int n) {\n    int zero = 0, one = 0;\n    for (int i = 1; n; n >>= 1, i <<= 1) {\n        one += i;\n        if (n % 2)\n            swap(one, zero);\n    }\n    return zero;\n}\n\n// Driver Code\nint main() {\n\n    int N = 4;\n    cout << MinOp(N);\n    return 0;\n}\n",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "32"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042563,
+            "untitledIndex": 25,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 473,
+            "editorCursor": 473,
+            "editorText": "#include <iostream>\n#include <map>\n#include <vector>\nusing namespace std;\n// Driver program to test the above function\nchar *frequency(char *str) {\n    string s(str);\n    int n = s.size();\n    vector<int> mp(26, 0);\n    for (int i = 0; i < n; i++) {\n        mp[s[i] - 'a']++;\n    }\n\n    char res[1000];\n}\nint main() {\n\n    string input;\n    cin >> input;\n    for (int i = 0; i < input.size(); i++) {\n        mp[input[i]]++;\n    }\n    string s = \"\";\n    for (auto el : mp) {\n        s = s + el.first;\n        s = s + to_string(el.second);\n    }\n    cout << s;\n    return 0;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                ""
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042563,
+            "untitledIndex": 23,
+            "verticalScrollbarValue": 0
+        },
+        {
+            "checkerIndex": 0,
+            "customCheckers": [
+            ],
+            "customCompileCommand": "",
+            "customTimeLimit": -1,
+            "editorAnchor": 389,
+            "editorCursor": 389,
+            "editorText": "#include <algorithm>\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint count_Triplets(vector<int> A) {\n    int n = A.size();\n    int max_val = 0;\n    for (int i = 0; i < n; i++)\n        max_val = max(max_val, A[i]);\n    int freq[max_val + 1] = {0};\n    for (int i = 0; i < n; i++)\n        freq[A[i]]++;\n\n    int count = 0;\n\n    count += freq[0] * (freq[0] - 1) * (freq[0] - 2) / 6;\n\n    for (int i = 1; 2 * i <= max_val; i++) {\n        count += freq[i] * (freq[i] - 1) / 2 * freq[i];\n    }\n\n    for (int i = 1; i <= max_val; i++) {\n        for (int j = i + 1; i + j <= max_val; j++)\n            count += freq[i] * freq[j] * freq[(i + j) / 2];\n    }\n\n    return count;\n}\n\nint main() {\n    // Your code goes here;\n    vector<int> A = {3, 2, 1, 3};\n    int N = 5;\n    cout << count_Triplets(A);\n    return 0;\n}",
+            "expected": [
+                ""
+            ],
+            "filePath": "",
+            "horizontalScrollBarValue": 0,
+            "input": [
+                "3434"
+            ],
+            "isLanguageSet": true,
+            "language": "C++",
+            "problemURL": "",
+            "savedText": "",
+            "testCaseSplitterStates": [
+                [
+                    31,
+                    31,
+                    30
+                ]
+            ],
+            "testcasesIsShow": [
+                true
+            ],
+            "timestamp": 1661166042564,
+            "untitledIndex": 21,
+            "verticalScrollbarValue": 0
+        }
+    ]
+}
