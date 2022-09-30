@@ -43,10 +43,12 @@ rm -rf nerd-fonts
 
 
 # ------------------------- #
-# Awesome
+# Dotfiles
 # ------------------------- #
 
 cp -r dotconfig/awesome ~/.config/
+cp -r dotconfig/kitty ~/.config/
+
 
 # ------------------------- #
 # ZSH
