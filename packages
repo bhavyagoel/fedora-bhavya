@@ -62,3 +62,5 @@ expat-devel
 dbus-x11
 kwrite
 qt
+qt5-qtbase-devel
+qt5-linguist
