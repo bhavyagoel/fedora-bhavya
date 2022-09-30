@@ -34,6 +34,7 @@ sudo dnf update && sudo dnf upgrade
 
 sudo dnf groupinstall -y "Development Tools" "Development Libraries"
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 packages = $( cat packages )
 for package in $packages
