@@ -1,6 +1,11 @@
 #!/bin/bash
 
 # ------------------------- #
+# Installing Packages	    #
+# ------------------------- #
+sudo dnf install -y dkms kernel-devel wpa_supplicant NetworkManager-wifi
+
+# ------------------------- #
 # Installing Wifi Driver    #
 # ------------------------- #
 
