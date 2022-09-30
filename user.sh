@@ -49,7 +49,8 @@ rm -rf nerd-fonts
 cp -r dotconfig/awesome ~/.config/
 cp -r dotconfig/kitty ~/.config/
 cp -r dotconfig/neofetch ~/.config/
-
+cp -r `dotconfig/CP Editor` ~/.config/
+sudo cp 'dotconfig/CP Editor/cp-editor.desktop' '/usr/share/applications/cp-editor.desktop'
 
 # ------------------------- #
 # ZSH
