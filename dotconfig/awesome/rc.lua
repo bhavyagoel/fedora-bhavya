@@ -1307,3 +1307,11 @@ client.connect_signal("focus", function(c)
 end)
 -- Autostart applications
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+
+
+
+client.connect_signal("manage", function (c)
+    c.shape = function(cr,w,h)
+        gears.shape.rounded_rect(cr,w,h,10)
+    end
+end)
