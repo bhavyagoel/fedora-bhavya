@@ -53,7 +53,7 @@ local function worker(user_args)
 
     local onlogout = args.onlogout or function () awesome.quit() end
     local onlock = args.onlock or function() awful.spawn.with_shell("i3lock") end
-    local onreboot = args.onreboot or function() awful.spawn.with_shell("reboot") end
+    local onreboot = args.onreboot or function() awful.spawn.with_shell("systemctl reboot") end
     local onsuspend = args.onsuspend or function() awful.spawn.with_shell("systemctl suspend") end
     local onpoweroff = args.onpoweroff or function() awful.spawn.with_shell("shutdown now") end
 

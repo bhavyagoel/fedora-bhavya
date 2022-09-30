@@ -69,3 +69,5 @@ echo 'export FZF_DEFAULT_OPTS=" \
 neofetch | lolcat
 
 source  ~/.config/zsh/mocha.sh' | sudo tee -a ~/.config/zsh/.zshrc
+
+cp dotfile/.zprofile ~/.config/zsh 
