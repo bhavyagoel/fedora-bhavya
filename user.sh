@@ -8,7 +8,7 @@ git clone https://github.com/catppuccin/gtk.git
 cd gtk
 ./install.sh
 ./gtkrc.sh 
-sudo ./gtkrc.sh 
+sudo ./install.sh && sudo ./gtkrc.sh 
 cd ..
 rm -rf gtk
 
