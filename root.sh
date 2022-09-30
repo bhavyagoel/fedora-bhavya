@@ -93,4 +93,13 @@ sudo systemctl enable tlp.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 sudo systemctl start tlp.service
 
-
+# -------------------------                 #
+# Tap to Click(libinput)            #
+# -------------------------                 #
+sudo echo 'Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
