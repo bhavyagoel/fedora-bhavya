@@ -48,6 +48,7 @@ rm -rf nerd-fonts
 
 cp -r dotconfig/awesome ~/.config/
 cp -r dotconfig/kitty ~/.config/
+cp -r dotconfig/neofetch ~/.config/
 
 
 # ------------------------- #
