@@ -57,7 +57,6 @@ cp -r dotconfig/kitty ~/.config/
 git clone https://github.com/yutkat/dotfiles
 cp -r dotfiles/.config/zsh ~/.config/
 cp -r dotfiles/.zshenv ~/
-exec zsh
 rm -rf dotfiles
 chsh -s $(which zsh)
 
@@ -73,3 +72,5 @@ neofetch | lolcat
 source  ~/.config/zsh/mocha.sh' | sudo tee -a ~/.config/zsh/.zshrc
 
 cp dotconfig/.zprofile ~/.config/zsh 
+
+exec zsh
