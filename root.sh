@@ -15,7 +15,7 @@ sudo hostnamectl set-hostname --static fedora
 # Resizing the root partition to fill the disk lvm #
 # ------------------------- #
 
-sudo lvresize -L +206G fedora/root && sudo xfs_growfs /dev/fedora/root
+sudo lvresize -L +206G fedora_fedora/root && sudo xfs_growfs /dev/fedora_fedora/root
 
 
 # ------------------------- #
