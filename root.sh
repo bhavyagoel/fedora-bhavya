@@ -30,14 +30,14 @@ defaultyes=True
 # Dependencies             #
 # ------------------------- #
 
-sudo dnf update && sudo dnf upgrade
+sudo dnf update -y && sudo dnf upgrade -y
 
 sudo dnf groupinstall -y "Development Tools" "Development Libraries"
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-packages = $( cat packages )
-for package in $packages
+
+for package in $( cat packages )
 do
     sudo dnf install -y $package
 done
@@ -68,4 +68,4 @@ echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
 # ------------------------- #
 # Startx                    #
 # ------------------------- #
-cp dotfiles/.xinitrc ~/
+cp dotconfig/.xinitrc ~/
