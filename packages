@@ -64,3 +64,4 @@ kwrite
 qt
 qt5-qtbase-devel
 qt5-linguist
+libgnome-keyring
