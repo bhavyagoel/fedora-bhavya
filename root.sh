@@ -66,6 +66,15 @@ echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
 
 
 # ------------------------- #
-# Startx                    #
+# Startx                     #
 # ------------------------- #
 cp dotconfig/.xinitrc ~/
+
+
+# ------------------------- #
+# TLP                         #
+# ------------------------- #
+sudo dnf remove power-profiles-daemon
+sudo systemctl enable tlp.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+sudo systemctl start tlp.service
