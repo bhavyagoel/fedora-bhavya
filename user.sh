@@ -60,7 +60,7 @@ cp -r dotfiles/.zshenv ~/
 rm -rf dotfiles
 chsh -s $(which zsh)
 
-cp dotfiles/mocha.sh ~/.config/zsh/
+cp dotconfig/mocha.sh ~/.config/zsh/
 
 echo 'export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
