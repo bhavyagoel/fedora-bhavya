@@ -3,20 +3,17 @@ local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
-local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
--- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
-local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
--- local email_widget, email_icon = require("email")
-local mpdarc_widget = require("awesome-wm-widgets.mpdarc-widget.mpdarc")
-local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
-local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
-local mpris_widget = require("awesome-wm-widgets.mpris-widget")
-local net_speed = require("awesome-wm-widgets.net-speed-widget.net-speed")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local todo_widget = require("widget.todo-widget.todo")
+local logout_menu_widget = require("widget.logout-menu-widget.logout-menu")
+local calendar_widget = require("widget.calendar-widget.calendar")
+local brightness_widget = require("widget.brightness-widget.brightness")
+local cpu_widget = require("widget.cpu-widget.cpu-widget")
+local docker_widget = require("widget.docker-widget.docker")
+local weather_widget = require("widget.weather-widget.weather")
+local ram_widget = require("widget.ram-widget.ram-widget")
+local mpris_widget = require("widget.mpris-widget")
+local net_speed = require("widget.net-speed-widget.net-speed")
+local cpu_temp = require("widget.cpu-temp-widget.temperature")
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -362,8 +359,6 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            -- mpdarc_widget,
-            -- mpd,
             mpris_widget(),
             -- wibox.container.background(mpris_widget() , theme.bg_menu_focus),
             spr,
@@ -418,7 +413,7 @@ function theme.at_screen_connect(s)
             -- close,
             spr,
             tempicon,
-            temp.widget,
+            cpu_temp,
             spr,
             -- open,
             -- close,

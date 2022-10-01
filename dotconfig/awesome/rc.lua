@@ -42,7 +42,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 -- }}}
 
 -- Spotify widget
-local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
+-- local todo_widget = require("widget.todo-widget.todo")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -280,10 +280,10 @@ screen.connect_signal("arrange", function(s)
 end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s)
-    beautiful.at_screen_connect(s)
-    s.systray = wibox.widget.systray()
-    s.systray.visible = true
-end)
+     beautiful.at_screen_connect(s)
+     s.systray = wibox.widget.systray()
+     s.systray.visible = true
+ end)
 -- }}}
 
 -- {{{ Mouse bindings
@@ -1309,9 +1309,9 @@ end)
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
 
 
-
 client.connect_signal("manage", function (c)
     c.shape = function(cr,w,h)
         gears.shape.rounded_rect(cr,w,h,10)
     end
 end)
+

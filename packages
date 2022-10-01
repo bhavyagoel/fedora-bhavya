@@ -65,3 +65,7 @@ qt
 qt5-qtbase-devel
 qt5-linguist
 libgnome-keyring
+sqlite
+lm_sensors
+hddtemp
+xsel
