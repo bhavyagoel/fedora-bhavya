@@ -271,11 +271,23 @@ theme.volume = lain.widget.alsa({
         widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
     end
 })
+
 theme.volume.widget:buttons(awful.util.table.join(awful.button({}, 4, function()
     awful.util.spawn("amixer set Master 1%+")
     theme.volume.update()
 end), awful.button({}, 5, function()
     awful.util.spawn("amixer set Master 1%-")
+    theme.volume.update()
+end), awful.button({}, 1, function()
+    awful.util.spawn("amixer set Master toggle")
+    theme.volume.update()
+end), awful.button({}, 3, function()
+    awful.util.spawn("pavucontrol")
+end)))
+
+-- on click mute
+volicon:buttons(awful.util.table.join(awful.button({}, 1, function()
+    awful.util.spawn("amixer set Master toggle")
     theme.volume.update()
 end)))
 
