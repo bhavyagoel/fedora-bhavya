@@ -18,7 +18,7 @@ local gfs = require("gears.filesystem")
 local HOME_DIR = os.getenv("HOME")
 local WIDGET_DIR = HOME_DIR .. '/.config/awesome/widget/todo-widget'
 -- local STORAGE = HOME_DIR .. '/.cache/awmw/todo-widget/todos.json'
-local STORAGE = HOME_DIR .. '/todos.json'
+local STORAGE = HOME_DIR .. '/.config/awesome/notes.json'
 
 local GET_TODO_ITEMS = 'bash -c "cat ' .. STORAGE .. '"'
 
@@ -333,6 +333,9 @@ local function worker(user_args)
 
     return todo_widget.widget
 end
+
+-- run python script each time a new todo item is added
+awful.spawn.with_shell("python3 " .. WIDGET_DIR .. "/main.py")
 
 if not gfs.file_readable(STORAGE) then
     spawn.easy_async(string.format([[bash -c "dirname %s | xargs mkdir -p && echo '{\"todo_items\":{}}' > %s"]],
