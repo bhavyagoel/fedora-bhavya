@@ -15,7 +15,7 @@ sudo hostnamectl set-hostname --static fedora
 # Resizing the root partition to fill the disk lvm #
 # ------------------------- #
 
-sudo lvresize -L +206G fedora_fedora/root && sudo xfs_growfs /dev/fedora_fedora/root
+sudo lvresize -L +80G fedora_fedora/root && sudo xfs_growfs /dev/fedora_fedora/root
 
 
 # ------------------------- #
@@ -96,10 +96,10 @@ sudo systemctl start tlp.service
 # -------------------------                 #
 # Tap to Click(libinput)            #
 # -------------------------                 #
-sudo echo 'Section "InputClass"
+echo 'Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
         MatchDevicePath "/dev/input/event*"
         Driver "libinput"
         Option "Tapping" "on"
-EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
+EndSection' | sudo tee -a  /etc/X11/xorg.conf.d/40-libinput.conf
