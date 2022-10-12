@@ -49,7 +49,6 @@ lxappearance
 qt5ct
 kvantum
 tlp
-tlp-rdw
 gnome-themes-extra
 gtk-murrine-engine
 zathura
@@ -70,3 +69,13 @@ lm_sensors
 hddtemp
 xsel
 exa
+cheese
+android-tools
+android-file-transfer
+thunar-volman thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+tumbler
+ffmpegthumbnailer
+ffmpegthumbnailer-devel
+xarchiver
