@@ -79,3 +79,6 @@ tumbler
 ffmpegthumbnailer
 ffmpegthumbnailer-devel
 xarchiver
+blivet-gui
+unrar
+clang-tools-extra
